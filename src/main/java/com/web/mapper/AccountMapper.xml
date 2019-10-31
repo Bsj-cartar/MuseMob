@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.mapper.AccountMapper">
+	<cache flushInterval="10000" />
+
+	<select id="findOne" resultType="Account">
+		SELECT * FROM Account WHERE 
+		uid = #{id};
+	</select>
+	<insert id="insert" useGeneratedKeys="true"
+		keyProperty="idAccount">
+		INSERT Account
+		(uid,
+		upw,
+		uname,
+		uemail)
+		VALUES
+		(#{id}, #{password}, #{name}, #{email});
+		SELECT * FROM musemob.account;
+	</insert>
+</mapper>
