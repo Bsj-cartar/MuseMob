@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+<script>
+	alert("환영합니다. 5포인트 지급합니다.");
+	self.location = "/";
+</script>
 </body>
 </html>

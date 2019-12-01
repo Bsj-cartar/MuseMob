@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.mapper.InstBoardMapper">
+	
+	<select id="findOne" resultType="InstBoard">
+		SELECT * FROM instboardtest WHERE 
+		postid = #{postid};
+	</select>
+	<select id="findAll" resultType="InstBoard">
+		SELECT * FROM instboardtest;
+	</select>
+	
+	<select id="selectBoardList" resultType="InstBoard">
+		SELECT * from instboardtest
+		where instsection = #{instSection}
+		order by postid DESC
+		limit #{pageStart}, #{perPageNum};
+
+	</select>
+	
+	<select id="selectBoardList2" resultType="InstBoard">
+		SELECT * from instboardtest
+		order by posttitle DESC
+		limit #{pageStart}, #{perPageNum};
+
+	</select>
+	
+	<select id="recentlyBoardList" resultType="InstBoard">
+		SELECT *
+		FROM instboardtest 
+		WHERE uid = #{uid}
+		ORDER BY postid DESC
+		LIMIT 3;
+	</select>
+	
+	<select id="recentlyBoardListInst" resultType="InstBoard">
+		SELECT *
+		FROM instboardtest 
+		WHERE uid = #{uid} and instsection = #{inst}
+		ORDER BY postid DESC
+		LIMIT 3;
+	</select>
+	
+	<select id="countBoardList" resultType="Integer">
+		SELECT count(*)
+		FROM instboardtest;
+	</select>
+	
+	
+	<select id="findPostidAccount" resultType="String">
+		SELECT uid FROM instboardtest
+		where postid = #{postid};
+	</select>
+	
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="postid">
+		INSERT INTO instboardtest(posttitle, postvideourl, uid, instsection, creationdate)
+		VALUES (#{posttitle}, #{postvideourl}, #{uid}, #{instsection}, #{creationdate});
+		
+	</insert>
+	
+	<update id="update">
+		update instboardtest
+		set posttitle = #{posttitle},
+		postvideourl = #{postvideourl},
+		instsection = #{instsection}
+		where postid = #{postid};
+	</update>
+	
+	<delete id="delete">
+		delete from instboardtest
+		where postid = #{postid};
+	</delete>
+	
+	
+	
+</mapper>

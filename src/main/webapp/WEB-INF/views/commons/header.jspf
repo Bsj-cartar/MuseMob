@@ -1,12 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ page import="java.util.*" %>
+    <%@ page import="com.web.dto.InstBoard"%>
 
-</body>
-</html>
+
+
+	<!-- Header -->
+	<header id="header">
+		<a class="logo" href="/">MuseMob</a>
+		<nav>
+			<c:choose>
+			
+			<c:when test="${ not empty sessionScope.login}">
+				<a href="/log_out">Logout</a>
+				<a href="#menu">내정보</a>
+				
+			</c:when>
+			<c:otherwise>
+				<a href="/login">Login</a>
+			</c:otherwise>
+			</c:choose>
+			
+			
+			
+		</nav>
+		
+		
+	</header>
+	
+	
+	<!-- Nav -->
+	<c:if test="${ not empty sessionScope.login}">
+	<nav id="menu">
+		<ul class="links">
+			<li><a><%= session.getAttribute("login") %> 님. 어서오세요.</a></li>
+			<li><a>포인트 : <%= session.getAttribute("point") %></a></li>
+			
+			<li><a>최근 게시물</a></li>
+		</ul>	
+		<ul class="links_recentlyPost">
+			<c:forEach var="recentlyPost" items="${recentlyPost }">
+				<li><a href="/board/post/${recentlyPost.postid }">${recentlyPost.posttitle}</a></li>
+			</c:forEach>
+		</ul>	
+		
+		
+		
+	</nav>
+	</c:if>
+	
+	<!-- Header_bottom -->
+	<div id="header_bottom">
+		<a href="/board/vocal">Vocal</a>
+		<a href="/board/guitar">Guitar</a>
+		<a href="/board/drum">Drum</a>
+		<a href="/board/bass">Bass</a>
+		<a href="/board/etc">etc</a>
+	</div>
+
+

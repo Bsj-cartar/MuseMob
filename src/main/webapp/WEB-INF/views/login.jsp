@@ -10,35 +10,16 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="stylesheet" href="res/css/main.css" />
+<link rel="stylesheet" href="../res/css/main.css" />
 <style>
-.row.gtr-uniform{
-justify-content: center;
+.row.gtr-uniform {
+	justify-content: center;
 }
 </style>
 </head>
 <body class="is-preload">
-	<!-- Header -->
-	<header id="header">
-		<a class="logo" href="/">MuseMob</a>
-		<nav>
-			<a href="login">Login</a> <a href="#menu">Menu</a>
-		</nav>
-	</header>
-
-	<!-- Nav -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="login">Login</a></li>
-			<li><a href="elements">Elements</a></li>
-			<li><a href="generic">Generic</a></li>
-		</ul>
-	</nav>
-
-	<!-- Heading -->
-	<div id="heading">
-		<h1>Login</h1>
-	</div>
+	<!-- Header 파일 include -->
+	<%@ include file="commons/header.jspf"%>
 
 	<!-- Main -->
 	<section id="main" class="wrapper">
@@ -49,11 +30,21 @@ justify-content: center;
 					<div class="col-8">
 						<h2>Sign in to your account</h2>
 
-						<form method="post" action="#">
+						<form method="post" action="/login/loginAccount">
 							<div class="row gtr-uniform">
-								<div><h3>id</h3></div> <input type="text" name="id" id="id" value=""
-									/> <div><h3>pass</h3></div> <input type="password"
-									name="password" id="password" value="" />
+								<div class="col-2">
+									<h3>id</h3>
+								</div>
+								<div class="col-10">
+									<input type="text" name="id" id="id" value="" />
+								</div>
+								<div class="col-2">
+									<h3>pass</h3>
+								</div>
+								<div class="col-10">
+									<input type="password" name="pw" id="pw" value="" />
+								</div>
+								
 								<div class="col-8">
 									<ul class="actions special">
 
@@ -65,7 +56,7 @@ justify-content: center;
 								</div>
 							</div>
 						</form>
-						<div class="col-4" style="background-color: black">hihihihihi</div>
+
 
 					</div>
 				</div>

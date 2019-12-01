@@ -1,36 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-.Container {
-margin: 40px;
-display: flex;
-justify-content:space-between;
-}
-
-.testGrid {
-display: flex;
-flex-direction: row;
-padding: 50px;
-border: 1px solid black;
-}
-</style>
+<link rel="stylesheet" href="res/css/Carousel.css" />
 </head>
 <body>
-<div class="Container">
-	<div class="testGrid">1</div>
-	<div class="testGrid">
-		<div class="testGrid">2</div>
-		<div class="testGrid">3</div>
-		<div class="testGrid">4</div>
+	<table>
+	<tr>
+		<td>1</td>
+		<td>1</td>
+		<td>1</td>
+		<td>1</td>
+		<td>1</td>
+		<td>1</td>
+		<td>1</td>
+	</tr>
+	<c:forEach var="musemob" items="${musemobs}">
+		<tr>
+			<td>${musemob.musemobid}</td>
+			<td>${musemob.championpost.postid}</td>
+			<td>${musemob.championpost.posttitle}</td>
+			<td>${musemob.championpoint}</td>
+			<td>${musemob.challengerpost.postid}</td>
+			<td>${musemob.challengerpost.posttitle}</td>
+			<td>${musemob.challengerpoint}</td>
+		</tr>
+	</c:forEach>
 	
-	</div>
-	
-</div>
+	</table>
 </body>
 </html>

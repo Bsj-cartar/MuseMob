@@ -184,7 +184,7 @@
 					$this.touchPosY = event.originalEvent.touches[0].pageY;
 
 				})
-
+ 
 				$this.on('touchmove', function(event) {
 
 					if ($this.touchPosX === null

@@ -16,6 +16,13 @@
 	font-style: normal
 }
 
+@font-face {
+	font-family: 'FontKorean';
+	src: url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400');
+	font-weight: normal;
+	font-style: normal	
+}
+
 .fa {
 	display: inline-block;
 	font: normal normal normal 14px/1 FontAwesome;

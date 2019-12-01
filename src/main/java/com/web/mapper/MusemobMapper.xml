@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.mapper.MusemobMapper">
+	<!-- select -->
+	<select id="findchampionPost" resultType="InstBoard">
+		SELECT i.*
+		FROM instboardtest AS i
+		JOIN musemob AS mm
+		ON i.postid = mm.championpostid;
+	</select>
+	
+	<select id="findchallengerPost" resultType="InstBoard">
+		SELECT i.*
+		FROM instboardtest AS i
+		JOIN musemob AS mm
+		ON i.postid = mm.challengerpostid;
+	</select>
+	
+	<select id="findOneDayAgo" resultType="Musemob">
+		SELECT * FROM musemob.musemob
+		where date(creationdate) = date(subdate(now(), INTERVAL 2 DAY));
+	</select>
+	
+	<select id="findAllWithPost" resultMap="museMobResultMap">
+		select mm.musemobid, 
+		cham.postid, cham.posttitle, cham.postvideourl, mm.championpoint, 
+		chall.postid as cpostid, chall.posttitle as cposttitle, chall.postvideourl as cpostvideourl, mm.challengerpoint
+		from musemob as mm 
+		left join instboardtest as cham
+		on mm.championpostid = cham.postid
+		left join instboardtest as chall
+		on mm.challengerpostid =  chall.postid;
+	</select>
+	
+	<resultMap id="museMobResultMap" type="Musemob">
+		<id property="musemobid" column="musemobid"/>
+		<result property="championpoint" column="championpoint"/>
+		<result property="challengerpoint" column="challengerpoint"/>
+		
+		<collection property="championpost" ofType="InstBoard">
+			<id property="postid" column="postid"/>
+			<result property="posttitle" column="posttitle"/>
+			<result property="postvideourl" column="postvideourl" />
+		</collection>
+		
+		<collection property="challengerpost" ofType="InstBoard">
+			<id property="postid" column="cpostid"/>
+			<result property="posttitle" column="cposttitle"/>
+			<result property="postvideourl" column="cpostvideourl" />
+		</collection>
+	</resultMap>
+	
+	
+	<!-- insert -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="musemobid">
+		INSERT musemob(championpostid, challengerpostid, creationdate)
+		values(#{championpostid}, #{challengerpostid}, #{creationdate});		
+	</insert>
+	
+	<!-- update -->
+	<update id="championPointUp">
+		update musemob set
+		championpoint = championpoint + #{championpoint}
+		where musemobid = #{musemobid};
+	</update>
+	
+	<update id="challengerPointUp">
+		update musemob set
+		challengerpoint = challengerpoint + #{challengerpoint}
+		where musemobid = #{musemobid};
+	</update>		
+	
+</mapper>

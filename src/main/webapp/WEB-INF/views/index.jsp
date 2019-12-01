@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url var="R" value="/MuseMob/" />
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -16,25 +17,9 @@
 </head>
 <body class="is-preload">
 
-	<!-- Header -->
-	<header id="header">
-		<a class="logo" href="/">MuseMob</a>
-		<nav>
-			<a href="login">Login</a>
-			<a href="#menu">Menu</a>
-		</nav>
-	</header>
-
-	<!-- Nav -->
-	<nav id="menu">
-		<a href="#menu">Menu</a>
-		<ul class="links">
-			<li><a href="#">Login</a></li>
-			<li><a href="elements">Elements</a></li>
-			<li><a href="generic">Generic</a></li>
-		</ul>
-	</nav>
-
+	<!-- Header 파일 include -->
+	<%@ include  file ="commons/header.jspf" %>
+	
 	<!-- Banner -->
 	<section id="banner">
 		<div class="inner">
@@ -47,10 +32,10 @@
 	</section>
 
 	<!-- Highlights -->
-	<section class="wrapper">
+	<%-- <section class="wrapper">
 		<div class="inner">
 			<header class="special">
-				<h2>Sem turpis amet semper</h2>
+				<h2><%= session.getAttribute("login") %></h2>
 				<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id
 					enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet
 					accumsan erat tempus amet porttitor.</p>
@@ -125,9 +110,9 @@
 			</div>
 		</div>
 	</section>
-
+ --%>
 	<!-- CTA -->
-	<section id="cta" class="wrapper">
+	<!-- <section id="cta" class="wrapper">
 		<div class="inner">
 			<h2>Curabitur ullamcorper ultricies</h2>
 			<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing
@@ -140,9 +125,9 @@
 				gravida.</p>
 		</div>
 	</section>
-
+ -->
 	<!-- Testimonials -->
-	<section class="wrapper">
+	<!-- <section class="wrapper">
 		<div class="inner">
 			<header class="special">
 				<h2>Faucibus consequat lorem</h2>
@@ -205,9 +190,9 @@
 			</div>
 		</div>
 	</section>
-
+ -->
 	<!-- Footer -->
-	<footer id="footer">
+	<!-- <footer id="footer">
 		<div class="inner">
 			<div class="content">
 				<section>
@@ -246,13 +231,13 @@
 			</div>
 		</div>
 	</footer>
-
+ -->
 	<!-- Scripts -->
-	<script src="res/js/jquery.min.js"></script>
-	<script src="res/js/browser.min.js"></script>
-	<script src="res/js/breakpoints.min.js"></script>
-	<script src="res/js/util.js"></script>
-	<script src="res/js/main.js"></script>
+	<script src="/res/js/jquery.min.js"></script>
+	<script src="/res/js/browser.min.js"></script>
+	<script src="/res/js/breakpoints.min.js"></script>
+	<script src="/res/js/util.js"></script>
+	<script src="/res/js/main.js"></script>
 
 </body>
 </html>
