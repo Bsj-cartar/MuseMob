@@ -3,15 +3,15 @@
 <mapper namespace="com.web.mapper.InstBoardMapper">
 	
 	<select id="findOne" resultType="InstBoard">
-		SELECT * FROM instboardtest WHERE 
+		SELECT * FROM instboard WHERE 
 		postid = #{postid};
 	</select>
 	<select id="findAll" resultType="InstBoard">
-		SELECT * FROM instboardtest;
+		SELECT * FROM instboard;
 	</select>
 	
 	<select id="selectBoardList" resultType="InstBoard">
-		SELECT * from instboardtest
+		SELECT * from instboard
 		where instsection = #{instSection}
 		order by postid DESC
 		limit #{pageStart}, #{perPageNum};
@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id="selectBoardList2" resultType="InstBoard">
-		SELECT * from instboardtest
+		SELECT * from instboard
 		order by posttitle DESC
 		limit #{pageStart}, #{perPageNum};
 
@@ -27,7 +27,7 @@
 	
 	<select id="recentlyBoardList" resultType="InstBoard">
 		SELECT *
-		FROM instboardtest 
+		FROM instboard 
 		WHERE uid = #{uid}
 		ORDER BY postid DESC
 		LIMIT 3;
@@ -35,7 +35,7 @@
 	
 	<select id="recentlyBoardListInst" resultType="InstBoard">
 		SELECT *
-		FROM instboardtest 
+		FROM instboard 
 		WHERE uid = #{uid} and instsection = #{inst}
 		ORDER BY postid DESC
 		LIMIT 3;
@@ -43,24 +43,25 @@
 	
 	<select id="countBoardList" resultType="Integer">
 		SELECT count(*)
-		FROM instboardtest;
+		FROM instboard
+		WHERE instsection = #{instsection};
 	</select>
 	
 	
 	<select id="findPostidAccount" resultType="String">
-		SELECT uid FROM instboardtest
+		SELECT uid FROM instboard
 		where postid = #{postid};
 	</select>
 	
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="postid">
-		INSERT INTO instboardtest(posttitle, postvideourl, uid, instsection, creationdate)
+		INSERT INTO instboard(posttitle, postvideourl, uid, instsection, creationdate)
 		VALUES (#{posttitle}, #{postvideourl}, #{uid}, #{instsection}, #{creationdate});
 		
 	</insert>
 	
 	<update id="update">
-		update instboardtest
+		update instboard
 		set posttitle = #{posttitle},
 		postvideourl = #{postvideourl},
 		instsection = #{instsection}
@@ -68,7 +69,7 @@
 	</update>
 	
 	<delete id="delete">
-		delete from instboardtest
+		delete from instboard
 		where postid = #{postid};
 	</delete>
 	

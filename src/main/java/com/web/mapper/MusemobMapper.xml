@@ -4,14 +4,14 @@
 	<!-- select -->
 	<select id="findchampionPost" resultType="InstBoard">
 		SELECT i.*
-		FROM instboardtest AS i
+		FROM instboard AS i
 		JOIN musemob AS mm
 		ON i.postid = mm.championpostid;
 	</select>
 	
 	<select id="findchallengerPost" resultType="InstBoard">
 		SELECT i.*
-		FROM instboardtest AS i
+		FROM instboard AS i
 		JOIN musemob AS mm
 		ON i.postid = mm.challengerpostid;
 	</select>
@@ -26,9 +26,9 @@
 		cham.postid, cham.posttitle, cham.postvideourl, mm.championpoint, 
 		chall.postid as cpostid, chall.posttitle as cposttitle, chall.postvideourl as cpostvideourl, mm.challengerpoint
 		from musemob as mm 
-		left join instboardtest as cham
+		left join instboard as cham
 		on mm.championpostid = cham.postid
-		left join instboardtest as chall
+		left join instboard as chall
 		on mm.challengerpostid =  chall.postid;
 	</select>
 	

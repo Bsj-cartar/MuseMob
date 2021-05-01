@@ -20,7 +20,7 @@
 
 	<!-- Heading -->
 	<div id="heading">
-		<h1>Drum</h1>
+		<h1>Guitar</h1>
 	</div>
 
 	<section id="cta">
@@ -41,7 +41,7 @@
 						
 					</div>
 					
-					<a href="drum/${musemob.musemobid }/chapmchoice" class="chapmchoice button small">응원하기</a>
+					<a href="guitar/${musemob.musemobid }/chapmchoice" class="chapmchoice button small">응원하기</a>
 					<%-- <button onclick="javascript:chapmchoice('${championpost.uid}')" class="chapmchoice button small">응원하기</button> --%>
 
 				</div>
@@ -54,7 +54,7 @@
 						
 					</div>
 					
-					<a href="drum/${musemob.musemobid }/challchoice" class="challchoice button small">응원하기</a>
+					<a href="guitar/${musemob.musemobid }/challchoice" class="challchoice button small">응원하기</a>
 				</div>
 			</c:forEach>
 			 
@@ -99,7 +99,7 @@
 							<ul class="actions">
 								<li><a href="#" class="button small"
 									onClick="fn_contentView(<c:out value="${list.postid}"/>)">상세보기</a></li>
-								<li><a href="drum/${list.postid}/support" class="button small">후원하기</a>
+								<li><a href="guitar/${list.postid}/support" class="button small">후원하기</a>
 								<li><a href="#Redirect" onClick="getPostId(<c:out value="${list.postid}"/>)" class="button primary small">대결 신청</a></li>
 								
 							</ul>
@@ -110,6 +110,17 @@
 			</div>
 		</div>
 	</section>
+	
+	<!--  테스트 코드 -->
+	<c:choose>
+		<c:when test="${pageMaker.startPage <= 0 }">
+			<h1>${pageMaker.startPage}</h1>
+		</c:when>
+
+		<c:otherwise>
+			<h1>${pageMaker.startPage}</h1>
+		</c:otherwise>
+	</c:choose>
 	
 	
 	<!-- The Modal -->
@@ -122,7 +133,7 @@
 			<h3>포인트가 100점 차감됩니다.</h3>
 			<p>최근 동영상 중 대전에 참가할 동영상을 선택해주세요.</p>
 	
-			<form action="drum/newchallenger" method="post">
+			<form action="guitar/newchallenger" method="post">
 				<div>
 					<c:forEach var="recentlyPost" items="${recentlyPostInst}">
 						<input type="radio" id="radio-${recentlyPost.postid}"
@@ -144,7 +155,7 @@
 		<ul>
 			<c:if test="${pageMaker.prev }">
 				<li><a
-					href='<c:url value="/board/drum?page=${pageMaker.startPage-1}"/>'>PREV</a></li>
+					href='<c:url value="/board/guitar?page=${pageMaker.startPage-1}"/>'>PREV</a></li>
 
 			</c:if>
 			<c:forEach begin="${pageMaker.startPage }"
@@ -153,10 +164,10 @@
 
 					<c:when test="${idx==page}">
 						<li><a class="currentPage"
-							href='<c:url value="/board/drum?page=${idx }"/>'>${idx }</a></li>
+							href='<c:url value="/board/guitar?page=${idx }"/>'>${idx }</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href='<c:url value="/board/drum?page=${idx }"/>'>${idx }</a></li>
+						<li><a href='<c:url value="/board/guitar?page=${idx }"/>'>${idx }</a></li>
 					</c:otherwise>
 
 
@@ -164,7 +175,7 @@
 			</c:forEach>
 			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
 				<li><a
-					href='<c:url value="/board/drum?page=${pageMaker.endPage+1 }"/>'>NEXT</a></li>
+					href='<c:url value="/board/guitar?page=${pageMaker.endPage+1 }"/>'>NEXT</a></li>
 			</c:if>
 		</ul>
 	</div>

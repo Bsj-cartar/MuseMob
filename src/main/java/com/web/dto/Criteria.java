@@ -5,24 +5,14 @@ public class Criteria {
 	private int page;
 	private int perPageNum;
 	private int instSection;
-	
-	public int getInstSection() {
-		return instSection;
-	}
 
-	public void setInstSection(int instSection) {
-		this.instSection = instSection;
-	}
-
-	public int getPageStart() {
-		return (this.page-1)*perPageNum;
-	}
-	
+	// 생성자 constructor
 	public Criteria() {
 		this.page = 1;
-		this.perPageNum = 9;
+		this.perPageNum = 6;
 	}
 	
+	// page getter, setter
 	public int getPage() {
 		return page;
 	}
@@ -35,9 +25,11 @@ public class Criteria {
 		}
 	}
 	
+	// perPageNum getter, setter
 	public int getPerPageNum() {
 		return perPageNum;
 	}
+	
 	public void setPerPageNum(int pageCount) {
 		int cnt = this.perPageNum;
 		if(pageCount != cnt) {
@@ -48,5 +40,21 @@ public class Criteria {
 		}
 			
 	}
+	
+	// InstSection getter, setter
+	public int getInstSection() {
+		return instSection;
+	}
+	
+	public void setInstSection(int instSection) {
+		this.instSection = instSection;
+	}
+
+	// method
+	public int getPageStart() {
+		return (this.page-1) * perPageNum;
+	}
+	
+	
 	
 }

@@ -15,7 +15,7 @@ public interface InstBoardMapper {
 	InstBoard findOne(int postid)throws Exception;
 	void insert(InstBoard instBoard)throws Exception;
 	List<InstBoard> selectBoardList(Criteria cri)throws Exception;
-	Integer countBoardList()throws Exception;
+	Integer countBoardList(int instsection)throws Exception;
 	List<InstBoard> recentlyBoardList(String uid)throws Exception;
 	List<InstBoard> recentlyBoardListInst(String uid, int inst)throws Exception;
 	

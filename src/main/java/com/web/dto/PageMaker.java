@@ -16,6 +16,7 @@ public class PageMaker {
     public void setCri(Criteria cri) {
         this.cri = cri;
     }
+    
     public int getTotalCount() {
         return totalCount;
     }
@@ -33,7 +34,10 @@ public class PageMaker {
         }
         
         startPage = (endPage - displayPageNum) + 1;
- 
+        if( startPage < 1 ) {
+        	startPage = 1;
+        }
+        
         prev = startPage == 1 ? false : true;
         next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
         

@@ -7,7 +7,7 @@ import com.web.dto.InstBoard;
 
 public interface BoardService {
 	List<InstBoard> selectBoardList(Criteria cri) throws Exception;
-	int countBoardList() throws Exception;
+	int countBoardList(int instsection) throws Exception;
 	int instSectionConversion(String inst)throws Exception;
 	String instSectionNumberConversion(int inst)throws Exception;
 	String WhatTimeIsItNow() throws Exception;

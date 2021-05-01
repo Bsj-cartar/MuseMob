@@ -1,3 +1,5 @@
+/* 게시판 관련 컨트롤러 /board/* 모두 해당 */
+
 package com.web.controller;
 
 import java.util.List;
@@ -30,16 +32,17 @@ public class BoardController {
 	@Autowired MusemobService musemobService;
 	
 	@RequestMapping("/board/{inst}")
-	public ModelAndView openGuitarList(@PathVariable String inst, Criteria cri, 
+	public ModelAndView openList(@PathVariable String inst, Criteria cri, 
 										HttpServletRequest request) throws Exception {
 	
-		ModelAndView mav = new ModelAndView("board/" + inst);
+		ModelAndView mav = new ModelAndView("board/boardview");
 		int inst_num = boardService.instSectionConversion(inst);
 		
-		cri.setInstSection(inst_num);
+		
 		PageMaker pageMaker = new PageMaker();
+		cri.setInstSection(inst_num);
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(boardService.countBoardList());
+		pageMaker.setTotalCount(boardService.countBoardList(inst_num));
 		
 		List<InstBoard> list = boardService.selectBoardList(cri);
 		
@@ -49,8 +52,11 @@ public class BoardController {
 		String uid = (String) session.getAttribute("login");
 		if(uid != null) {
 			System.out.println(uid);
+			
+		List<InstBoard> recentlyPost = boardService.recentlyBoardList(uid);
 		List<InstBoard> recentlyPostInst = boardService.recentlyBoardListInst(uid, inst_num);
 		mav.addObject("recentlyPostInst", recentlyPostInst);
+		mav.addObject("recentlyPost", recentlyPost);
 		}
 		
 		
@@ -126,8 +132,9 @@ public class BoardController {
 		String uid = (String) session.getAttribute("login");
 		if(uid != null) {
 			System.out.println(uid);
-		List<InstBoard> recentlyPostInst = boardService.recentlyBoardListInst(uid, instSection);
-		model.addAttribute("recentlyPostInst", recentlyPostInst);
+			
+		List<InstBoard> recentlyPost = boardService.recentlyBoardList(uid);
+		model.addAttribute("recentlyPost", recentlyPost);
 		}
 		model.addAttribute("inst", inst);
 		model.addAttribute("boardContent", instBoard);

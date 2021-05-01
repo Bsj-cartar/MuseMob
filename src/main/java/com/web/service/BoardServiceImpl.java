@@ -1,3 +1,5 @@
+/* 게시판 관련 서비스 */
+
 package com.web.service;
 
 import java.text.SimpleDateFormat;
@@ -23,9 +25,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int countBoardList() throws Exception {
+	public int countBoardList(int instsection) throws Exception {
 		
-		return instBoardMapper.countBoardList();
+		return instBoardMapper.countBoardList(instsection);
 	}
 
 	@Override
